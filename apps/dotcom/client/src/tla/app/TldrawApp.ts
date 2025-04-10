@@ -170,7 +170,7 @@ export class TldrawApp {
 
 	async preload(initialUserData: TlaUser) {
 		let didCreate = false
-		await this.userQuery().preload({ ttl: 'forever' }).complete
+		await this.userQuery().preload({ ttl: '2d' }).complete
 		await this.changesFlushed
 		if (!this.user$.get()) {
 			didCreate = true
@@ -184,7 +184,7 @@ export class TldrawApp {
 		if (!this.user$.get()) {
 			throw Error('could not create user')
 		}
-		await this.fileStatesQuery().preload({ ttl: 'forever' }).complete
+		await this.fileStatesQuery().preload({ ttl: '2d' }).complete
 		return didCreate
 	}
 
